@@ -1,0 +1,11 @@
+include README.rst LICENSE AUTHORS CHANGES
+include tox.ini
+include xpolyglot/default.model
+
+recursive-include tools *
+recursive-include tests *
+prune docs/_build
+
+recursive-exclude * __pycache__
+recursive-exclude * *.py[co]
+recursive-exclude * .DS_Store
