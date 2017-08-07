@@ -19,16 +19,26 @@ API
     Host: localhost:8000
     User-Agent: HTTPie/0.9.9
 
-    HTTP/1.0 200 OK
-    Date: Sun, 06 Aug 2017 15:37:57 GMT
-    Server: WSGIServer/0.2 CPython/3.6.2
-    content-length: 8214
+    HTTP/1.1 200 OK
+    Connection: close
+    Date: Mon, 07 Aug 2017 19:57:23 GMT
+    Server: gunicorn/19.7.1
+    content-length: 6908
     content-type: application/json
 
-    "[\"0815\", \"360-Assembly\", \"4D\", \"4DOS-Batch\", \"6502-Assembly\", \"6800-Assembly\", \"68000-Assembly\", \"8-1-2\",
-    \"80386-Assembly\", \"8051-Assembly\", \"8080-Assembly\", \"8086-Assembly\", \"8th\", \"A+\", \"ABAP\", \"ACL2\", \"ALGOL\",
-    \"ALGOL-60\", \"ALGOL-68\", \"ALGOL-W\", \"AMPL\", \"ANT\", \"ANTLR\", \"APL\", \"ARM-Assembly\", \"ASP\", \"ASP.Net\",
-    \"ATS\", \"AWK\", \"ActionScript\", \"Ada\" ...
+    [
+        "8086-Assembly",
+        "ALGOL",
+        "ANT",
+        "ANTLR",
+        "APL",
+        "ARM-Assembly",
+        "ASP",
+        "ASP.Net",
+        "ATS",
+        "AWK",
+        "ActionScript",
+    ...
 
 
 ``POST /predict`` - detect the programming language of a given snippet, e.g.:
@@ -39,26 +49,25 @@ API
     Accept: application/json, */*
     Accept-Encoding: gzip, deflate
     Connection: keep-alive
-    Content-Length: 478
+    Content-Length: 102
     Content-Type: application/json
     Host: localhost:8000
     User-Agent: HTTPie/0.9.9
 
     {
-        "data": "#include <stdio.h>\n\n\nconst size_t SIZE = 65536;\n\n\nint main(int argc, char **argv)
-        {\n    char buf[65536];\n    size_t counts[256];\n\n    FILE* f = fopen(argv[1], \"rb\");\n\n
-        size_t read_bytes = fread(buf, 1, SIZE, f);\n    while (read_bytes != 0) {\n
-        for (size_t i = 0; i < read_bytes; ++i) {\n            counts[(unsigned char) buf[i]] += 1;\n
-        }\n\n        read_bytes = fread(buf, 1, SIZE, f);\n    }\n\n    fclose(f);\n\n    return 0;\n}\n"
+        "data": "#include <stdio.h>\n\nint main()\n{\n    printf(\"Hello, World!\\n\");\n    return 0;\n}\n"
     }
 
-    HTTP/1.0 200 OK
-    Date: Sun, 06 Aug 2017 15:33:44 GMT
-    Server: WSGIServer/0.2 CPython/3.6.2
-    content-length: 19
+    HTTP/1.1 200 OK
+    Connection: close
+    Date: Mon, 07 Aug 2017 19:55:41 GMT
+    Server: gunicorn/19.7.1
+    content-length: 13
     content-type: application/json
 
-    "{\"lang\": \"C\"}"
+    {
+        "lang": "C"
+    }
 
 
 Deployment
