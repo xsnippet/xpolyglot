@@ -1,3 +1,4 @@
+import gzip
 import json
 import os
 import pkg_resources
@@ -30,9 +31,9 @@ class Application(falcon.API):
         except AttributeError:
             serialized_model_path = os.environ.get(
                 'XPOLYGLOT_SERIALIZED_MODEL',
-                pkg_resources.resource_filename('xpolyglot', 'default.model')
+                pkg_resources.resource_filename('xpolyglot', 'resources/default.model.gz')
             )
-            with open(serialized_model_path, 'rb') as f:
+            with gzip.open(serialized_model_path, 'rb') as f:
                 self._LOCAL.predictor = prediction.Predictor(f)
 
             return self._LOCAL.predictor

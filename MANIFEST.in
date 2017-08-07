@@ -1,6 +1,6 @@
 include README.rst LICENSE AUTHORS CHANGES
 include tox.ini
-include xpolyglot/default.model
+include xpolyglot/resources/default.model.gz
 
 recursive-include tools *
 recursive-include tests *
