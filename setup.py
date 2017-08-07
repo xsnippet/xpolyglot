@@ -20,7 +20,7 @@ setup(
         'pytest-runner',
     ],
     install_requires=[
-        'hug',
+        'falcon',
         'numpy == 1.13.1',
         'scikit-learn == 0.18.2',
         'scipy == 0.19.1',
