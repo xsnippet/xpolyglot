@@ -26,7 +26,9 @@ setup(
         'scipy == 0.19.1',
     ],
     tests_require=[
+        'gunicorn',
         'pytest >= 2.8.7',
+        'requests',
     ],
     classifiers=[
         'Environment :: Web Environment',
